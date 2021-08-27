@@ -1,0 +1,76 @@
+:host {
+    /* display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; */
+    margin: auto;
+}
+
+#container {
+    background-color: bisque;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-image: url("./../assets/morning.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#search {
+    position: absolute;
+    top: 1%;
+    width: 95%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #4e95f3;
+}
+
+#search-box {
+    width: 90%;
+    font-size: 0.8em;
+    padding: 0 10px;
+    flex-grow: 1;
+    outline: none;
+    border-radius: 10px 0 0 10px;
+}
+
+#search-icon {
+    font-size: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+#first-layer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 98%;
+    margin-top: 60px;
+    border: 1px solid black;
+}
+
+#atmosphere-icon {
+    /* height: 100%; */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+app-cards-layer {
+    width: 98%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#first-layer > * {
+    border: 1px solid black;
+}
