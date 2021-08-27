@@ -4,8 +4,11 @@
         <span class="material-icons" id="search-icon" (click)='onQuery($event)'>search</span>
     </div>
     <div id="first-layer">
-        <div id="atmosphere-icon"></div>
+        <app-atmosphere-icon
+            [icon]='weatherData.list[0].weather[0].icon'>
+        </app-atmosphere-icon>
         <app-stats
+            class="card-styles"
             [dt_txt]='weatherData.list[0].dt_txt'
             [temp]='weatherData.list[0].main.temp'
             [maxTemp]='weatherData.list[0].main.temp_max'
@@ -15,6 +18,7 @@
             [city]='weatherData.city.name'>
         </app-stats>
     </div>
+    <div id="forecast">5-Day Forecast:</div>
     <app-cards-layer
         [list]='weatherData.list'>
     </app-cards-layer>

@@ -4,5 +4,19 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 50%;
+}
+
+:host > div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 700px) {
+    :host {
+        font-size: 0.8em;
+    }
 }

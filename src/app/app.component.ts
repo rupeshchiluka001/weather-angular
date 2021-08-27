@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   weatherData!: WeatherData;
   sub!: Subscription;
   city: string = "nizamabad";
+  isDataRetrived: boolean = false;
 
   constructor(private dataService: ExtractDataService) {}
 
@@ -23,17 +24,12 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
-  insertIcon(icon: string): void {
-    let atmosphereIcon = document.getElementById("atmosphere-icon") as HTMLDivElement;
-    atmosphereIcon.innerHTML = `<img src="./../assets/${icon}.svg" width="250px" height="auto">`;
-  }
   
   getWeatherData(city: string = "nizamabad") {
     this.sub = this.dataService.getData(city).subscribe({
       next: data => {
         this.weatherData = data;
-        this.insertIcon(this.weatherData.list[0].weather[0].icon);
+        this.isDataRetrived = true;
       },
       error: err => console.log(err)
     });
@@ -43,6 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let value = (document.getElementById('search-box') as HTMLInputElement).value;
     if (value && value !== this.city) {
       this.city = value;
+      this.isDataRetrived = false;
       this.getWeatherData(value);
     }
   }
