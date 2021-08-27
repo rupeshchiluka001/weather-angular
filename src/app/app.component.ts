@@ -24,6 +24,16 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
+
+  setBackground(): Object {
+    return (this.weatherData.list[0].dt < this.weatherData.city.sunset) ?
+      {
+        "background-image": 'url("../assets/morning.jpg")'
+      } : 
+      {
+        "background-image": 'url("../assets/night.jpg")'
+      };
+  }
   
   getWeatherData(city: string = "nizamabad") {
     this.sub = this.dataService.getData(city).subscribe({

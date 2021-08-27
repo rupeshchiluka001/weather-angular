@@ -1,4 +1,4 @@
-<div id="container" *ngIf="isDataRetrived">
+<div id="container" *ngIf="isDataRetrived" [ngStyle]='setBackground()'>
     <div id="search">
         <input type="text" id="search-box" placeholder="Search any city..."  (keyup.enter)='onQuery($event)'/>
         <span class="material-icons" id="search-icon" (click)='onQuery($event)'>search</span>
