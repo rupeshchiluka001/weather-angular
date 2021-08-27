@@ -9,10 +9,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 1px solid black;
-    /* background-image: url("./../assets/morning.jpg");
+    border: 2px solid #3861f7;
+    background-image: url("../assets/morning.jpg");
     background-size: cover;
-    background-position: top; */
+    box-shadow: 0 0 10px #4267ec;
 }
 
 #search {

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
     font-size: 1.5em;
@@ -17,7 +21,7 @@ body {
 .card-styles {
     padding: 30px;
     margin: 20px;
-    background-color: #89C1CE;
+    background-color: #839ef7;
     border-radius: 10px;
-    box-shadow: 0 0 10px #50A1B4;
+    box-shadow: 0 0 10px #aebdf1;
 }

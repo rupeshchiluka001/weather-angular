@@ -39,7 +39,6 @@ export class AppComponent implements OnInit, OnDestroy {
     let value = (document.getElementById('search-box') as HTMLInputElement).value;
     if (value && value !== this.city) {
       this.city = value;
-      this.isDataRetrived = false;
       this.getWeatherData(value);
     }
   }
