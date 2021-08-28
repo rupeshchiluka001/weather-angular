@@ -8,21 +8,18 @@
 }
 
 :host > div {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     margin: 5px;
+}
+
+div:nth-child(1) {
+    text-shadow: 0px 0px 4px white;
+    text-decoration: 1.5px underline;
 }
 
 @media (max-width: 700px) {
     :host {
         font-size: 0.8em;
-    }
-}
-
-@media (max-width: 500px) {
-    :host {
-        width: 100%;
+        width: 90%;
     }
 }

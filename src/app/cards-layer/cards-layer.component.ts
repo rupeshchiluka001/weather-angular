@@ -9,6 +9,7 @@ import { WeatherDataList } from '../weather-data-list';
 export class CardsLayerComponent implements OnInit {
 
   @Input() list!: WeatherDataList[];
+  @Input() isItDay: boolean = false;
 
   ngOnInit(): void {
   }

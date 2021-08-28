@@ -1,4 +1,6 @@
-<div id="container" *ngIf="isDataRetrived" [ngStyle]='setBackground()'>
+<div id="container"
+    *ngIf="isDataRetrived"
+    [ngStyle]='setBackground()'>
     <div id="search">
         <input type="text" id="search-box" placeholder="Search any city..."  (keyup.enter)='onQuery($event)'/>
         <span class="material-icons" id="search-icon" (click)='onQuery($event)'>search</span>
@@ -8,7 +10,9 @@
             [icon]='weatherData.list[0].weather[0].icon'>
         </app-atmosphere-icon>
         <app-stats
-            class="card-styles"
+            [class.day-colors]="isItDay"
+            [class.night-colors]="!isItDay"
+            [class.card-styles]="true"
             [dt_txt]='weatherData.list[0].dt_txt'
             [temp]='weatherData.list[0].main.temp'
             [maxTemp]='weatherData.list[0].main.temp_max'
@@ -18,8 +22,14 @@
             [city]='weatherData.city.name'>
         </app-stats>
     </div>
-    <div id="forecast">4-Day Forecast:</div>
+    <div id="forecast"
+        [class.day-colors]="isItDay"
+        [class.night-colors]="!isItDay"
+        [class.card-styles]="true">
+        4-Day Forecast:
+    </div>
     <app-cards-layer
-        [list]='weatherData.list'>
+        [list]='weatherData.list'
+        [isItDay]='isItDay'>
     </app-cards-layer>
 </div>

@@ -9,10 +9,9 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 2px solid #3861f7;
-    /* background-image: url("../assets/morning.jpg"); */
+    border: 2px solid #033B6C;
     background-size: cover;
-    box-shadow: 0 0 10px #4267ec;
+    box-shadow: 0 0 30px #0960ac;
 }
 
 #search {
@@ -50,8 +49,11 @@
 }
 
 #forecast {
-    margin-top: 30px;
-    
+    text-decoration: 1.5px underline;
+    text-shadow: 0px 0px 4px white;
+    font-weight: bolder;
+    padding: 3px 5px;
+    border-radius: 10px;
 }
 
 app-cards-layer {

@@ -15,9 +15,8 @@ export class StatsComponent implements OnInit {
   @Input() humidity: number = 0;
   @Input() windSpeed: number = 0;
 
-  constructor() { }
-
   ngOnInit(): void {
+    
   }
 
 }

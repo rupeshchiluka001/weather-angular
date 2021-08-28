@@ -1,5 +1,8 @@
 <app-card
     class="card-styles"
     *ngFor='let c of [8,16,24,32]'
-    [oneDayData]='list[c]'>
+    [oneDayData]='list[c]'
+    [class.card-styles]="true"
+    [class.day-colors]="isItDay"
+    [class.night-colors]="!isItDay">
 </app-card>

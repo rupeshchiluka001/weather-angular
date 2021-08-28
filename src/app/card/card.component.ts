@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherDataList } from '../weather-data-list';
 
 @Component({
@@ -6,11 +6,9 @@ import { WeatherDataList } from '../weather-data-list';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() oneDayData!: WeatherDataList;
-
-  ngOnInit(): void {
-  }
+  @Input() isItDay: boolean = false;
 
 }

@@ -10,12 +10,13 @@ import { WeatherData } from './weather-data';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  constructor(private dataService: ExtractDataService) {}
+
   weatherData!: WeatherData;
   sub!: Subscription;
   city: string = "nizamabad";
   isDataRetrived: boolean = false;
-
-  constructor(private dataService: ExtractDataService) {}
+  isItDay: boolean = false;
 
   ngOnInit(): void {
     this.getWeatherData();
@@ -26,20 +27,22 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   setBackground(): Object {
-    return (this.weatherData.list[0].dt < this.weatherData.city.sunset) ?
-      {
-        "background-image": 'url("../assets/morning.jpg")'
-      } : 
-      {
-        "background-image": 'url("../assets/night.jpg")'
-      };
+    return (this.isItDay) ?
+      { "background-image": 'url("assets/morning.jpg")' }
+      : 
+      { "background-image": 'url("assets/night.jpg")' };
   }
   
-  getWeatherData(city: string = "nizamabad") {
+  getWeatherData(city: string = this.city) {
     this.sub = this.dataService.getData(city).subscribe({
       next: data => {
         this.weatherData = data;
         this.isDataRetrived = true;
+        if (this.weatherData.list[0].dt <= this.weatherData.city.sunset) {
+          this.isItDay = true;
+        } else {
+          this.isItDay = false;
+        }
       },
       error: err => console.log(err)
     });
