@@ -26,6 +26,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  setVariable(): void {
+    let bodyElement = document.body as HTMLBodyElement;
+    if (this.weatherData.list[0].dt <= this.weatherData.city.sunset) {
+      this.isItDay = true;
+      bodyElement.classList.remove("night-background");
+      bodyElement.classList.add("day-background")
+    } else {
+      this.isItDay = false;
+      bodyElement.classList.remove("day-background");
+      bodyElement.classList.add("night-background")
+    }
+  }
+
   setBackground(): Object {
     return (this.isItDay) ?
       { "background-image": 'url("assets/morning.jpg")' }
@@ -38,11 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
       next: data => {
         this.weatherData = data;
         this.isDataRetrived = true;
-        if (this.weatherData.list[0].dt <= this.weatherData.city.sunset) {
-          this.isItDay = true;
-        } else {
-          this.isItDay = false;
-        }
+        this.setVariable();
       },
       error: err => console.log(err)
     });
