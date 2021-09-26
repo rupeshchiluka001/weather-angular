@@ -15,11 +15,12 @@ export class AtmosphereIconComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.insertIcon(this.icon);
+    console.log(this.icon);
   }
 
   insertIcon(icon: string): void {
-    let atmosphereIcon = document.getElementsByTagName('app-atmosphere-icon')[0] as HTMLElement
-    atmosphereIcon.innerHTML = `<img src="assets/${icon}.svg" width="250px" height="auto">`;
+    let atmosphereIcon = document.getElementById('atmosphereIconImage') as HTMLImageElement;
+    atmosphereIcon.src = `assets/${icon}.svg`;
   }
 
 }

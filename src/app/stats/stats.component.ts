@@ -9,6 +9,7 @@ export class StatsComponent implements OnInit {
 
   @Input() dt_txt: string = "";
   @Input() city: string = "";
+  @Input() desc: string = "";
   @Input() temp: number = 0;
   @Input() maxTemp: number = 0;
   @Input() minTemp: number = 0;

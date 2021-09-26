@@ -17,7 +17,7 @@ div:nth-child(1) {
     text-decoration: 1.5px underline;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 705px) {
     :host {
         font-size: 0.8em;
         width: 90%;

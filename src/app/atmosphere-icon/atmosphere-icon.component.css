@@ -1,3 +1,19 @@
 :host {
     margin: 20px;
 }
+
+img {
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(5px 5px 20px #ced3ee);
+    animation: movement 2s linear infinite alternate;
+}
+
+@keyframes movement {
+    from {
+        transform: translateX(-10px);
+    }
+    to {
+        transform: translateX(10px);
+    }
+}
