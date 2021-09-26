@@ -53,7 +53,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isDataRetrived = true;
         this.setVariable();
       },
-      error: err => console.log(err)
+      error: err =>  {
+        alert("City Not Found in Database :(\nPlease check the spelling or Search Another city!");
+      }
     });
   }
 

@@ -1,0 +1,12 @@
+To serve:
+ng serve -o
+
+To build:
+(install lite-server: npm install -g lite-server)
+-ng build --watch
+lite-server --baseDir="dist/<project-name (here weatherApp)>
+
+To deploy to github pages:
+git push -u
+(ng add angular-cli-ghpages)
+ng deploy --base-href=/<repository-name> (here weather-angular)/
