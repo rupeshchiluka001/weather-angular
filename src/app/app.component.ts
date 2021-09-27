@@ -14,7 +14,6 @@ import { PlaceHolderDirective } from './shared/place-holder.directive';
 export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: ExtractDataService,
-              private ViewContainerRef: ViewContainerRef,
               private componentFactoryResolver: ComponentFactoryResolver) {}
   
   @ViewChild(PlaceHolderDirective) popUp!: PlaceHolderDirective;
@@ -25,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   city: string = "nizamabad";
   isDataRetrived: boolean = false;
+  showLoading: boolean = false;
   isItDay: boolean = false;
   closeSub!: Subscription;
 
@@ -65,11 +65,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.weatherData = data;
         this.isDataRetrived = true;
         this.setVariable();
+        this.showLoading = false;
       },
       error: err =>  {
         this.showAlert(this.city);
-        // var popUp = (document.createElement("app-alert-msg") as AlertMsgComponent);
-        // alert(`"${this.city}" Not Found in Database :(\nPlease check the spelling or Search Another city!`);
       }
     });
   }
@@ -90,6 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let value = (document.getElementById('search-box') as HTMLInputElement).value;
 
     if ( value ) {
+      this.showLoading = true;
       this.city = value;
       this.getWeatherData(value);
     }

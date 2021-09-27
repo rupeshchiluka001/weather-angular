@@ -1,4 +1,7 @@
 <ng-template appPlaceHolder></ng-template>
+<div id="loadingBackDrop" *ngIf="this.showLoading">
+    <div id="loading"></div>
+</div>
 <div id="container"
     *ngIf="isDataRetrived"
     [ngStyle]='setBackground()'>

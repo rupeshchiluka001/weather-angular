@@ -62,3 +62,40 @@ app-cards-layer {
     width: 100%;
     margin: 20px 10px;
 }
+
+#loading {
+    width: 100px;
+    height: 100px;
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #0000ff;
+    border-bottom: 10px solid #0000ff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ced3ee;
+    animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loadingBackDrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #000000bf;
+}
+
+#loading {
+    z-index: 50;
+    position: fixed;
+    top: 40%;
+    left: 45%;
+}
