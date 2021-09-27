@@ -62,12 +62,13 @@ export class AppComponent implements OnInit, OnDestroy {
   getWeatherData(city: string = this.city) {
     this.sub = this.dataService.getData(city).subscribe({
       next: data => {
+        this.showLoading = false;
         this.weatherData = data;
         this.isDataRetrived = true;
         this.setVariable();
-        this.showLoading = false;
       },
       error: err =>  {
+        this.showLoading = false;
         this.showAlert(this.city);
       }
     });
