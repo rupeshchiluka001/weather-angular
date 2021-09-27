@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 * {
@@ -8,7 +8,8 @@
 html {
     height: 100%;
     font-size: 1.6em;
-    font-family: 'Raleway', sans-serif;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -28,13 +29,13 @@ body {
 }
 
 .day-colors {
-    background-color: #4275E2;
+    background-image: linear-gradient(to right, #369bdc, #2d96db, #2491d9, #198cd8, #0c87d6);
     box-shadow: 0 0 10px #a4bef7;
 }
 
 .night-colors {
     color: white;
-    background-color: #064179;
+    background-image: radial-gradient( circle 610px at 5.2% 51.6%,  #050872 0%, #070335 97.5% );
     box-shadow: 0 0 10px #24c4f0;
 }
 

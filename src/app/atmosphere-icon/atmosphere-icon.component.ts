@@ -15,7 +15,6 @@ export class AtmosphereIconComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.insertIcon(this.icon);
-    console.log(this.icon);
   }
 
   insertIcon(icon: string): void {

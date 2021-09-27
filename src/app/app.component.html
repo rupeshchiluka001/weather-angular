@@ -1,10 +1,11 @@
+<ng-template appPlaceHolder></ng-template>
 <div id="container"
     *ngIf="isDataRetrived"
     [ngStyle]='setBackground()'>
-    <div id="search">
-        <input type="text" id="search-box" placeholder="Search any city..."  (keyup.enter)='onQuery($event)'/>
-        <span class="material-icons" id="search-icon" (click)='onQuery($event)'>search</span>
-    </div>
+    <form (ngSubmit)="onQuery()" id="search">
+        <input type="text" id="search-box" placeholder="Search any city..."/>
+        <input class="material-icons" type="submit" id="search-icon" value="search" (click)="onQuery()">
+    </form>
     <div id="first-layer">
         <app-atmosphere-icon
             [icon]='weatherData.list[0].weather[0].icon'>

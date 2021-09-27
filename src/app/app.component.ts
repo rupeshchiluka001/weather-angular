@@ -1,7 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ExtractDataService } from './services/extract-data.service';
 import { WeatherData } from './weather-data';
+import { AlertMsgComponent } from './alert-msg/alert-msg.component';
+import { ViewContainerRef } from '@angular/core';
+import { PlaceHolderDirective } from './shared/place-holder.directive';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +13,20 @@ import { WeatherData } from './weather-data';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor(private dataService: ExtractDataService) {}
+  constructor(private dataService: ExtractDataService,
+              private ViewContainerRef: ViewContainerRef,
+              private componentFactoryResolver: ComponentFactoryResolver) {}
+  
+  @ViewChild(PlaceHolderDirective) popUp!: PlaceHolderDirective;
+
+  // this.popUp.createCon
 
   weatherData!: WeatherData;
   sub!: Subscription;
   city: string = "nizamabad";
   isDataRetrived: boolean = false;
   isItDay: boolean = false;
+  closeSub!: Subscription;
 
   ngOnInit(): void {
     this.getWeatherData();
@@ -24,11 +34,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+    if ( this.closeSub ) {
+      this.closeSub.unsubscribe();
+    }
   }
 
   setVariable(): void {
     let bodyElement = document.body as HTMLBodyElement;
-    if (this.weatherData.list[0].dt <= this.weatherData.city.sunset) {
+    let regexp = new RegExp('^[0-9]{2,3}d$');
+
+    if ( regexp.test(this.weatherData.list[0].weather[0].icon) ) {
       this.isItDay = true;
       bodyElement.classList.remove("night-background");
       bodyElement.classList.add("day-background")
@@ -40,10 +55,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   setBackground(): Object {
-    return (this.isItDay) ?
-      { "background-image": 'url("assets/morning.jpg")' }
-      : 
-      { "background-image": 'url("assets/night.jpg")' };
+    return { "background-image": 
+              (this.isItDay) ? 'url("assets/morning.jpg")' : 'url("assets/night.jpg")' };
   }
   
   getWeatherData(city: string = this.city) {
@@ -54,16 +67,33 @@ export class AppComponent implements OnInit, OnDestroy {
         this.setVariable();
       },
       error: err =>  {
-        alert("City Not Found in Database :(\nPlease check the spelling or Search Another city!");
+        this.showAlert(this.city);
+        // var popUp = (document.createElement("app-alert-msg") as AlertMsgComponent);
+        // alert(`"${this.city}" Not Found in Database :(\nPlease check the spelling or Search Another city!`);
       }
     });
   }
 
-  onQuery(e: Event): void {
+  showAlert(location: string) {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertMsgComponent);
+    this.popUp.ViewContainerRef.clear();
+    const componentRef = this.popUp.ViewContainerRef.createComponent(componentFactory);
+    componentRef.instance.locationName = location;
+    this.closeSub = componentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      this.popUp.ViewContainerRef.clear();
+    });
+  }
+
+  onQuery(): Boolean {
+
     let value = (document.getElementById('search-box') as HTMLInputElement).value;
-    if (value && value !== this.city) {
+
+    if ( value ) {
       this.city = value;
       this.getWeatherData(value);
     }
+    return false;
   }
+
 }

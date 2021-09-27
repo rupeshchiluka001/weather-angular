@@ -1,0 +1,34 @@
+#backDrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #000000bf;
+}
+
+#popUp {
+    z-index: 50;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: auto;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #ffffffab;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 5px #2ee9f066, 10px 10px #2ee3f04d, 15px 15px #2ee3f033, 20px 20px #2ed9f01a, 25px 25px #2ee3f00d;
+    text-align: center;
+}
+
+button {
+    font-size: 15px;
+    padding: 5px 20px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #d0d0d780;
+}

@@ -7,3 +7,16 @@
 div {
     margin: 3px 0px;
 }
+
+@media screen and (max-width: 950px) {
+    @media screen and (min-width: 550px) {
+        :host {
+            width: 40%;
+        }
+    }
+    @media screen and (max-width: 549px) {
+        :host {
+            width: 80%;
+        }
+    }
+}
